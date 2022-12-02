@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ReservasService } from '../services/reservas.service';
+import { Reservacion } from '../models/reservacion';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,12 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  private reserva: Reservacion;
+
+  constructor(private serviceR: ReservasService) {}
+
+  public addReserva(){
+    this.serviceR.newReserva(this.reserva);
+  }
 
 }
