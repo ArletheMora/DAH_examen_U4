@@ -1,0 +1,7 @@
+{
+  "name": "DAH-u4Examen",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
