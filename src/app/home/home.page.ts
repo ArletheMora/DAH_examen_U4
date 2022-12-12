@@ -1,6 +1,6 @@
+import { ReservasService } from './../services/reservas.service';
 import { Cliente } from './../models/cliente';
 import { Component, NgModule } from '@angular/core';
-import { ReservasService } from '../services/reservas.service';
 import { Reservacion } from '../models/reservacion';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -29,10 +29,10 @@ export class HomePage {
   futbolito: boolean = false;
 
 
-  constructor(private serviceR: ReservasService,
+  constructor(private reservasService: ReservasService,
     private fb: FormBuilder) {
     this.reserva = {
-      date: this.fecha,
+      date: this.fecha.toString(),
       price: 0,
       client: "",
       tel: "",
@@ -48,15 +48,25 @@ export class HomePage {
   }
 
   public addReserva() {
-    this.fecha = this.myForm.get('fechaInicio').value
+    this.fecha = new Date (this.myForm.get('fecha').value)
+    console.log(this.fecha)
+    console.log(this.cliente)
+
+    //COMPROBAR FECHA LIBRE
+    //fechaOcupada()
+
+    //COMPROBAR CLIENTE
+    
+
+    //NUEVA RESERVA
     this.reserva = {
-      date: this.fecha,
+      date: this.fecha.toString(),
       price: this.total,
       client: this.cliente.name,
       tel: this.cliente.tel
     }
 
-    this.serviceR.newReserva(this.reserva);
+    this.reservasService.newReserva(this.reserva);
   }
 
   //EXTRAS
@@ -93,3 +103,7 @@ export class HomePage {
     this.profundidadAnt = this.profundidadAct
   }
 }
+function fechaOcupada() {
+  this.reservasService.getDiaOcupado(this.fecha)
+}
+

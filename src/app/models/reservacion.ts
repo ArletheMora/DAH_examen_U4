@@ -1,5 +1,5 @@
 export class Reservacion {
-    date?: Date;
+    date?: String;
     price?: number;
     client?: string;
     tel?: string;

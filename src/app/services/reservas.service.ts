@@ -16,7 +16,6 @@ export class ReservasService {
   }
 
   public getReserva(): Observable<Reservacion[]> {
-    //return this.students;
     return this.firestore.collection('reservacion').snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -28,8 +27,22 @@ export class ReservasService {
     )
   }
 
+  public getDiaOcupado(fechaAComprobar): Observable<Reservacion[]> {
+    return this.firestore.collection('reservacion').snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as Reservacion;
+          const id = a.payload.doc.id;
+          return {id, ...data };
+        }).filter(reserva => reserva.date == fechaAComprobar)
+      })
+    )
+  }
+
   public newReserva(reserva: Reservacion){
     this.firestore.collection('reservacion').add(reserva)
   }
+
+
 
 }
