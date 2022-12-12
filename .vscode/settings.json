@@ -1,7 +1,5 @@
 {
-    "workbench.colorCustomizations": {
-        "activityBar.background": "#332E07",
-        "titleBar.activeBackground": "#48400A",
-        "titleBar.activeForeground": "#FCFAEB"
-    }
+    "cSpell.words": [
+        "firestore"
+    ]
 }

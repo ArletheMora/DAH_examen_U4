@@ -15,7 +15,7 @@ export class ReservasService {
   constructor(private firestore: AngularFirestore,) { 
   }
 
-  public getReserva(): Observable<Reservacion[]> {
+  public getReservas(): Observable<Reservacion[]> {
     return this.firestore.collection('reservacion').snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -42,7 +42,5 @@ export class ReservasService {
   public newReserva(reserva: Reservacion){
     this.firestore.collection('reservacion').add(reserva)
   }
-
-
 
 }
