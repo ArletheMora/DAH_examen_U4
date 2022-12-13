@@ -83,7 +83,7 @@ export class HomePage {
       } else {
         //NUEVA RESERVA
         this.reserva = {
-          date: this.fecha.toDateString(),
+          date: this.fecha.toLocaleDateString(),
           price: this.total,
           client: this.cliente.name,
           tel: this.cliente.tel,
@@ -143,7 +143,7 @@ export class HomePage {
 
   public fechaOcupada(): Boolean {
     let ocupado = false;
-    let fechaPropuesta = this.fecha.toDateString();
+    let fechaPropuesta = this.fecha.toLocaleDateString();
 
     for (let index = 0; index < this.reservaciones.length; index++) {
       let fechaOcupada = this.reservaciones[index].date;

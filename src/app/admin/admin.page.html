@@ -5,14 +5,18 @@
 </ion-header>
 
 <ion-content>
-  <ion-row>
-    <ion-item>
-      <ion-col size="12">
-        <ion-toggle>Primeros 2</ion-toggle>
-      </ion-col>
-      <ion-item>
-        <p>Cliente: <br /></p>
-      </ion-item>
-    </ion-item>
-  </ion-row>
+  <ion-item>
+    <ion-label> <b> Próximos 2 eventos </b></ion-label>
+    <ion-toggle
+      (ionChange)="toggleChanged($event)"
+    ></ion-toggle>
+  </ion-item>
+  <ion-item *ngFor="let reservacion of reservaciones">
+    <p>Cliente: {{reservacion.client}} <br/>
+       Teléfono: {{reservacion.tel}} <br>
+       Fecha: {{reservacion.date}}<br>
+       Precio: {{reservacion.price}}
+    </p>
+    
+  </ion-item>
 </ion-content>
